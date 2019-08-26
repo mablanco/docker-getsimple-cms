@@ -9,6 +9,11 @@ RUN curl -LO http://get-simple.info/data/uploads/releases/GetSimpleCMS-$GETSIMPL
     mv GetSimpleCMS-$GETSIMPLE_VERSION/* . && \
     rm -rf GetSimpleCMS-$GETSIMPLE_VERSION.zip GetSimpleCMS-$GETSIMPLE_VERSION/
 RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
+RUN docker-php-ext-configure gd \
+        --with-freetype-dir=/usr/lib/ \
+        --with-png-dir=/usr/lib/ \
+        --with-jpeg-dir=/usr/lib/ \
+        --with-gd
 RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-configure zip --with-libzip && \
     docker-php-ext-install -j$(nproc) zip
