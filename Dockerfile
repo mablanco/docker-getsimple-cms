@@ -13,10 +13,8 @@ RUN curl -s -LO http://get-simple.info/data/uploads/releases/GetSimpleCMS-$GETSI
     rm -rf GetSimpleCMS-$GETSIMPLE_VERSION.zip GetSimpleCMS-$GETSIMPLE_VERSION/ && \
     mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && \
     docker-php-ext-configure gd \
-        --with-freetype-dir=/usr/lib/ \
-        --with-png-dir=/usr/lib/ \
-        --with-jpeg-dir=/usr/lib/ \
-        --with-gd && \
+        --with-freetype=/usr/lib/ \
+        --with-jpeg=/usr/lib/ && \
     docker-php-ext-configure zip && \
     docker-php-ext-install -j$(nproc) gd opcache zip && \
     a2enmod rewrite && \
