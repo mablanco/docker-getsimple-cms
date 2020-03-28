@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.4.4-apache-buster
 ARG GETSIMPLE_VERSION=3.3.15
 WORKDIR /var/www/html
 RUN apt-get update && \
@@ -15,7 +15,7 @@ RUN docker-php-ext-configure gd \
         --with-jpeg-dir=/usr/lib/ \
         --with-gd
 RUN docker-php-ext-install -j$(nproc) gd
-RUN docker-php-ext-configure zip --with-libzip && \
+RUN docker-php-ext-configure zip && \
     docker-php-ext-install -j$(nproc) zip
 RUN docker-php-ext-install -j$(nproc) opcache
 RUN a2enmod rewrite
