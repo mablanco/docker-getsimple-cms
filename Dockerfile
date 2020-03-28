@@ -1,5 +1,5 @@
 FROM php:7.4.4-apache-buster
-ARG GETSIMPLE_VERSION=3.3.15
+ARG GETSIMPLE_VERSION=3.3.16
 WORKDIR /var/www/html
 RUN apt-get update && \
     apt-get -y install curl zip libzip-dev libgd-dev && \
