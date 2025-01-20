@@ -1,5 +1,5 @@
-FROM php:7.4.9-apache-buster
-ENV DEBIAN_FRONTEND noninteractive
+FROM php:8.3.13-apache
+ARG DEBIAN_FRONTEND=noninteractive
 ARG GETSIMPLE_VERSION=3.3.16
 WORKDIR /var/www/html
 RUN apt-get update && \
